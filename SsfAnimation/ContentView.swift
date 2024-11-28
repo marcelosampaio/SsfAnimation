@@ -8,12 +8,18 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var isDone = false
+
     var body: some View {
         VStack {
-            Image(systemName: "globe")
+            Image(systemName: isDone ? "checkmark.circle" : "circle")
                 .imageScale(.large)
                 .foregroundStyle(.tint)
-            Text("Hello, world!")
+                .onTapGesture {
+                    isDone.toggle()
+                }
+
+            Text(isDone ? "To Do" : "Done")
         }
         .padding()
     }
